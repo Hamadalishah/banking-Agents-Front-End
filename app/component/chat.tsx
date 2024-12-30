@@ -107,7 +107,6 @@ export default function Chat() {
 
       <div className="p-4 border-t bg-background dark:bg-gray-900 dark:border-gray-700">
         <div className="flex space-x-2">
-            <Image src="/logo.jpeg" alt="Bank Logo" width={40} height={40} />
           <Input
             value={input}
             onChange={(e) => setInput(e.target.value)}
@@ -115,7 +114,13 @@ export default function Chat() {
             onKeyPress={(e) => e.key === 'Enter' && sendMessage()}
             className="dark:bg-gray-800 dark:text-white"
           />
-          <Button onClick={sendMessage}>Send</Button>
+          <Button 
+            onClick={sendMessage}
+            onTouchStart={sendMessage}
+            className="px-6 py-2 text-white bg-blue-600 rounded-md hover:bg-blue-700 active:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+          >
+            Send
+          </Button>
         </div>
       </div>
     </div>
