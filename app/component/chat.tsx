@@ -66,6 +66,11 @@ export default function Chat() {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' })
   }, [messages])
 
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+    sendMessage()
+  }
+
   return (
     <div className="flex flex-col h-screen dark:bg-gray-900">
       <header className="flex items-center justify-between p-4 bg-background border-b dark:border-gray-700">
@@ -106,22 +111,20 @@ export default function Chat() {
       </Card>
 
       <div className="p-4 border-t bg-background dark:bg-gray-900 dark:border-gray-700">
-        <div className="flex space-x-2">
+        <form onSubmit={handleSubmit} className="flex space-x-2">
           <Input
             value={input}
             onChange={(e) => setInput(e.target.value)}
             placeholder="Type your message..."
-            onKeyPress={(e) => e.key === 'Enter' && sendMessage()}
             className="dark:bg-gray-800 dark:text-white"
           />
           <Button 
-            onClick={sendMessage}
-            onTouchStart={sendMessage}
+            type="submit"
             className="px-6 py-2 text-white bg-blue-600 rounded-md hover:bg-blue-700 active:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
           >
             Send
           </Button>
-        </div>
+        </form>
       </div>
     </div>
   )
