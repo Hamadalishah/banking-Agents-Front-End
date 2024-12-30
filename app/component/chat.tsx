@@ -1,5 +1,3 @@
-'use client'
-
 import { useState, useEffect, useRef } from 'react'
 import Image from 'next/image'
 import { Input } from "./ui/input"
@@ -129,4 +127,3 @@ export default function Chat() {
     </div>
   )
 }
-
